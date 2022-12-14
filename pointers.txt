@@ -1,0 +1,18 @@
+from sklearn.svm import SVC
+from sklearn.model_selection import GridSearchCV
+
+# Define the range of values for the kernel and regularization hyperparameters
+param_grid = {'kernel': ['linear', 'rbf'], 'C': [0.1, 1, 10]}
+
+# Create a SVM model
+svm = SVC()
+
+# Use GridSearchCV to evaluate the model for every combination of hyperparameter values
+grid_search = GridSearchCV(svm, param_grid, cv=5, scoring='accuracy')
+grid_search.fit(X, y)
+
+# Print the best combination of hyperparameters
+print('Best hyperparameters:', grid_search.best_params_)
+
+
+https://amueller.github.io/aml/02-supervised-learning/07-support-vector-machines.html
